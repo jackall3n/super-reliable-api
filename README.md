@@ -94,4 +94,4 @@ With a queue in place, `POST` requests should be fairly well protected, as you c
 
 - If I were to stick with using an API, I'd either use a framework like NestJS or a more lightweight framework like Fastify. Or, potentially replaced this service with serverless functions.
 - I'd have liked to have added in some more tests, particularly around the redis queue.
-- Implemented proper logging. git add
+- Implemented proper logging.
