@@ -1,0 +1,67 @@
+{
+  "name": "node-express-typescript",
+  "version": "1.0.0",
+  "description": "Node.js setup with Express and TypeScript",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "rimraf dist && tsc --project tsconfig.build.json",
+    "preserve": "npm run build",
+    "serve": "cross-env NODE_ENV=development concurrently \"tsc --project tsconfig.build.json --watch\" \"nodemon -q dist/index.js\"",
+    "prestart": "npm run build",
+    "start": "cross-env NODE_ENV=production node dist/index.js",
+    "test": "jest ./src",
+    "db:setup": "prisma migrate dev",
+    "db:seed": "prisma db seed",
+    "start:services": "docker compose up -d",
+    "setup:everything": "pnpm i; cp env.example .env; pnpm start:services; pnpm db:setup; pnpm db:seed; pnpm test"
+  },
+  "prisma": {
+    "seed": "ts-node prisma/seed.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ultimatecourses/node-express-typescript.git"
+  },
+  "author": "ultimatecourses",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ultimatecourses/node-express-typescript/issues"
+  },
+  "homepage": "https://github.com/ultimatecourses/node-express-typescript#readme",
+  "dependencies": {
+    "@prisma/client": "^5.0.0",
+    "@types/body-parser": "^1.19.0",
+    "@types/express": "^4.17.11",
+    "@types/node": "^14.14.22",
+    "body-parser": "^1.19.0",
+    "bull": "^4.10.4",
+    "cross-env": "^7.0.3",
+    "date-fns": "^2.30.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-jwt": "^6.0.0",
+    "helmet": "^4.4.1",
+    "jsonwebtoken": "^8.5.1",
+    "rimraf": "^3.0.2",
+    "uuid": "^8.3.2",
+    "yup": "^1.2.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.22.8",
+    "@babel/preset-env": "^7.22.7",
+    "@babel/preset-typescript": "^7.22.5",
+    "@types/express-jwt": "^6.0.1",
+    "@types/jest": "^29.5.3",
+    "@types/jsonwebtoken": "^8.5.1",
+    "@types/supertest": "^2.0.12",
+    "@types/uuid": "^8.3.0",
+    "babel-jest": "^29.6.1",
+    "concurrently": "^5.3.0",
+    "jest": "^29.6.1",
+    "nodemon": "^2.0.7",
+    "prettier": "^3.0.0",
+    "prisma": "^5.0.0",
+    "supertest": "^6.3.3",
+    "typescript": "^5.1.6"
+  }
+}
