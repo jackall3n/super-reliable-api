@@ -1,5 +1,5 @@
 {
-  "name": "node-express-typescript",
+  "name": "super-reliable-api",
   "version": "1.0.0",
   "description": "Node.js setup with Express and TypeScript",
   "main": "dist/index.js",
@@ -9,7 +9,7 @@
     "serve": "cross-env NODE_ENV=development concurrently \"tsc --project tsconfig.build.json --watch\" \"nodemon -q dist/index.js\"",
     "prestart": "npm run build",
     "start": "cross-env NODE_ENV=production node dist/index.js",
-    "test": "jest ./src",
+    "test": "jest --coverage --verbose --detectOpenHandles --forceExit",
     "db:setup": "prisma migrate dev",
     "db:seed": "prisma db seed",
     "start:services": "docker compose up -d",

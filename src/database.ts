@@ -36,7 +36,7 @@ export async function getReadings(from: Date, to: Date): Promise<Reading[]> {
     orderBy: {
       time: "asc",
     }
-  });
+  }) as Reading[]; // TODO: Remove this
 }
 
 /**
